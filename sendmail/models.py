@@ -20,13 +20,19 @@ class Message(models.Model):
 
 
     def send_message(self):
-        send_mail(
-        self.subject,
-        self.body,
-        'vityarock@yandex.ru',
-        [self.receiver],
-        fail_silently=False,
-        )
+        try:
+            send_mail(
+            self.subject,
+            self.body,
+            'vityarock@yandex.ru',
+            [self.receiver],
+            fail_silently=False,
+            )
+            self.send_status = True
+        except Exception:
+        	self.send_status = False
+
+
 
 
     def save(self, *args, **kwargs):
