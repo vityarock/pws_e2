@@ -4,7 +4,7 @@
 
 {% block content%}
 
-<form id="email_form" method="post" action="{% url 'mail_list' %}">
+<form id="email_form" method="post" action="{% url 'mail_form' %}">
   {% csrf_token %}
   {{ form.as_ul }}
   <input type="submit" value="Send mail">

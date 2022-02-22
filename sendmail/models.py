@@ -7,7 +7,7 @@ import threading
 # Create your models here.
 class Message(models.Model):
     subject = models.CharField("Тема", max_length=128)
-    body = models.TextField("Сообщение")
+    body = models.TextField("Сообщение", max_length=2048)
     sender = models.EmailField("Адрес отправителя", max_length=254, blank=True, null=True)
     receiver = models.EmailField("Адрес получателя", max_length=254)
     delay = models.SmallIntegerField("Отправить через (Секунды)")
@@ -45,3 +45,4 @@ class Message(models.Model):
 
     class Meta:
         ordering = ['-id']
+#TODO: add favicon, new migration, create div in frontend
