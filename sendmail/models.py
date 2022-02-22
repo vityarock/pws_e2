@@ -29,14 +29,16 @@ class Message(models.Model):
             fail_silently=False,
             )
             self.send_status = True
-
+            self.save()
         except OSError:
-            self.send_status = False        
+            self.send_status = False
+            self.save()    
 
 
     def save(self, *args, **kwargs):
-        timer = threading.Timer(self.delay, Message.send_message, args=(self, ), kwargs=None)
-        timer.start()
+        if not self.id:
+            timer = threading.Timer(self.delay, Message.send_message, args=(self, ), kwargs=None)
+            timer.start()
 
         super(Message, self).save(*args, **kwargs)
 
