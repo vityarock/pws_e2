@@ -10,17 +10,11 @@
 <ul>
 {% for email in object_list %}
   <li>
-    <p>Subject: {{ email.subject }}</p>
-    <p>Message: {{ email.body }}</p>
-    <p>To:  {{ email.receiver }}</p>
-    <p>Created: {{ email.sending_time|date:'e Y-m-d H:i:s' }}</p>
-    <p>Delay: {{ email.delay }} sec</p>
-    <p>Status: {{ email.get_send_status_display }}
+    <p>Subject: {{ email.subject }} | To:  {{ email.receiver }} | Status: {{ email.get_send_status_display }}
       {% if email.send_status is True %}<span > mail send </span>
-    {% else %}<span> mail sheduled </span>
-    {% endif %}
-    </p>
-    
+      {% else %}<span> mail sheduled </span>
+      {% endif %} | Created: {{ email.sending_time|date:'e Y-m-d H:i:s' }} | Delay: {{ email.delay }} sec</p>
+    <textarea>Message: {{ email.body }}</textarea>
   </li>
 {% endfor %}
 </ul>
