@@ -22,9 +22,9 @@
 {% for email in object_list %}
   <li>
     created: {{ email.sending_time|date:'e Y-m-d H:i:s' }} | {{ email.receiver }} | delay: {{ email.delay }} sec
-    <p>status on {{ email.get_status_display }}
-      {{ email.status }}
-    {% if email.status is True %}<span > mail send </span>
+    <p>status on {{ email.get_send_status_display }} {{ email.send_status }}
+
+    {% if email.send_status is True %}<span > mail send </span>
     {% else %}<span> mail sheduled </span>
     {% endif %}
     </p>
