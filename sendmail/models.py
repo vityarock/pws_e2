@@ -16,9 +16,7 @@ class Message(models.Model):
 
 
     def __str__(self):
-    	""" Attention! String with line break \\"""
-        return f'from: {self.sender} | to:{self.receiver} | subject: {self.subject} \
-        | body: {self.body} | send: {self.sending_time.strftime("%Y-%m-%d | %H:%M:%S")}'
+        return f'from: to:{self.receiver} | subject: {self.subject} | body: {self.body} '
 
 
     def send_message(self):
