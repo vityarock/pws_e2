@@ -19,5 +19,6 @@ from sendmail.views import EmailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', EmailView.as_view(), name='mail_form'),
+    path('', EmailView.as_view(), name='mail_list'),
+    path('create/', EmailCreate.as_view(), name='mail_form'),
 ]

@@ -1,55 +1,16 @@
 
+
 {% load static %}
 
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-        <meta charset="UTF-8">  
-	<title>Emails</title> 
+{% extends 'base.html' %}
 
+{% block extra_title %}send message{% endblock extra_title %}
 
-</head>
-<body>
+{% block content%}
 
 <form id="email_form" method="post" action="{% url 'mail_form' %}">
   {% csrf_token %}
   {{ form.as_ul }}
   <input type="submit" value="Send mail">
 </form>
-
-<p>Emails stat</p>
-<ul>
-{% for email in object_list %}
-  <li>
-    created: {{ email.sending_time|date:'e Y-m-d H:i:s' }} | {{ email.receiver }} | delay: {{ email.delay }} sec
-    <p>Status: {{ email.get_send_status_display }} {{ email.send_status }}
-
-    {% if email.send_status is True %}<span > mail send </span>
-    {% else %}<span> mail sheduled </span>
-    {% endif %}
-    </p>
-    <p>Subject: {{ email.subject }}</p>
-    <p>Message: {{ email.body }}</p>
-  </li>
-{% endfor %}
-</ul>
-
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-				    <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-						<a href="?page={{ paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-</body>
-</html>
+{% endblock %}

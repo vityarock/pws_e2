@@ -8,7 +8,7 @@ import threading
 class Message(models.Model):
     subject = models.CharField("Тема", max_length=128)
     body = models.TextField("Сообщение")
-    sender = models.EmailField("Адрес отправителя", max_length=254)
+    sender = models.EmailField("Адрес отправителя", max_length=254, blank=True, null=True)
     receiver = models.EmailField("Адрес получателя", max_length=254)
     delay = models.SmallIntegerField("Отправить через (Секунды)")
     send_status = models.BooleanField("Отправлено", default = False)
@@ -16,7 +16,7 @@ class Message(models.Model):
 
 
     def __str__(self):
-        return f'from: {self.sender} to:{self.receiver} subject: {self.subject} body: {self.body} send: {self.sending_time}'
+        return f'from: {self.sender} | to:{self.receiver} | subject: {self.subject} | body: {self.body} | send: {self.sending_time.strftime("%Y-%m-%d-%H.%M.%S")}'
 
 
     def send_message(self):
