@@ -16,4 +16,4 @@ class EmailCreate(CreateView):
     model = Message
     form_class = EmailForm
     template_name = 'mail_form.html'
-    success_url = reverse_lazy('mail_form')    
+    success_url = reverse_lazy('mail_list')    
