@@ -27,12 +27,13 @@ class Message(models.Model):
         [self.receiver],
         fail_silently=False,
         )
-        self.send_status = True
+        
 
 
     def save(self, *args, **kwargs):
         timer = threading.Timer(self.delay, Message.send_message, args=(self, ), kwargs=None)
         timer.start()
+        self.send_status = True
         super(Message, self).save(*args, **kwargs)
 
 
