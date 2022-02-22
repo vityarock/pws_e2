@@ -16,7 +16,8 @@ class Message(models.Model):
 
 
     def __str__(self):
-        return f'from: {self.sender} | to:{self.receiver} | subject: {self.subject} | body: {self.body} | send: {self.sending_time.strftime("%Y-%m-%d-%H.%M.%S")}'
+        return f'from: {self.sender} | to:{self.receiver} | subject: {self.subject}'
+        ' | body: {self.body} | send: {self.sending_time.strftime("%Y-%m-%d | %H:%M:%S")}'
 
 
     def send_message(self):
