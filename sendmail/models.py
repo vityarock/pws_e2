@@ -29,7 +29,7 @@ class Message(models.Model):
             fail_silently=False,
             )
             self.send_status = True
-        except Exception:
+        except OSError:
         	self.send_status = False
 
 

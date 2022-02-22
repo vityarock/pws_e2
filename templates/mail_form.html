@@ -21,13 +21,14 @@
 <ul>
 {% for email in object_list %}
   <li>
-    created: {{ email.created_date|date:'e Y-m-d H:i:s' }} | {{ email.receiver }} | delay: {{ email.delay }} sec
+    created: {{ email.sending_time|date:'e Y-m-d H:i:s' }} | {{ email.receiver }} | delay: {{ email.delay }} sec
     {% if email.delay %} ({{ email.scheduled_for|date:'e Y-m-d H:i:s' }}){% endif %}
     <p>status on {{ email.last_update_date|date:'e Y-m-d H:i:s' }}: {{ email.get_status_display }}
     {% if email.status %}<span > mail send </span>
     {% else %}<span> mail sheduled </span>
     {% endif %}
     </p>
+    <p>Subject: {{ email.subject }}</p>
     <p>Text: {{ email.body }}</p>
   </li>
 {% endfor %}
