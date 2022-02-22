@@ -20,20 +20,24 @@ class Message(models.Model):
 
 
     def send_message(self):
-        send_mail(
-        self.subject,
-        self.body,
-        'vityarock@yandex.ru',
-        [self.receiver],
-        fail_silently=False,
-        )
-        
+        try:
+            send_mail(
+            self.subject,
+            self.body,
+            'vityarock@yandex.ru',
+            [self.receiver],
+            fail_silently=False,
+            )
+            self.send_status = True
+
+        except OSError:
+            self.send_status = False        
 
 
     def save(self, *args, **kwargs):
         timer = threading.Timer(self.delay, Message.send_message, args=(self, ), kwargs=None)
         timer.start()
-        self.send_status = True
+
         super(Message, self).save(*args, **kwargs)
 
 
