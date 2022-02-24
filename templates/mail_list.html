@@ -7,17 +7,24 @@
 
 
 <p>Messages list:</p>
-<ul>
+<!-- <ul> -->
+<div class="container">
+  <div class="row">
 {% for email in object_list %}
-  <li>
-    <p>Subject: {{ email.subject }} | To:  {{ email.receiver }} | Status: {{ email.get_send_status_display }}
+  <!-- <li> -->
+  	<div class="col-3">
+      <p>Subject: {{ email.subject }} | To:  {{ email.receiver }} | Status: {{ email.get_send_status_display }}
       {% if email.send_status is True %}<span > mail send </span>
       {% else %}<span> mail sheduled </span>
       {% endif %} | Created: {{ email.sending_time|date:'e Y-m-d H:i:s' }} | Delay: {{ email.delay }} sec</p>
+    </div>
+    <div class="col-9">  
     <textarea>Message: {{ email.body }}</textarea>
-  </li>
+    </div>
+  <!-- </li> -->
 {% endfor %}
-</ul>
+</div>
+<!-- </ul> -->
 
 <div class="pagination">
     <span class="step-links">
