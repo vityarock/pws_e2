@@ -7,7 +7,7 @@
 
 
 <p>Messages list:</p>
-<div class="container-fluid">
+<div class="container-fluid border">
   <div class="row">
 {% for email in object_list %}
   	<div class="col-3">
@@ -21,7 +21,7 @@
     </div>
     <div class="col-9">  
     <label for="mail_body">Message :</label><br>
-    <textarea id = "mail_body" rows="6" cols="70" >{{ email.body }}</textarea>
+    <p class="border" id = "mail_body" rows="6" cols="70" >{{ email.body }}</p>
     </div>
     <hr>
 {% endfor %}
