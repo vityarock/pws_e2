@@ -3,11 +3,11 @@
 {% block extra_title %}send message{% endblock extra_title %}
 
 {% block content%}
-
-<form class="m-10 border-dark  rounded" method="post" action="{% url 'mail_form' %}">
-  {% csrf_token %}
-  {{ form.as_ul }}
-  <input type="submit" value="Send mail">
-</form>
-
+<div class="mx-auto border-dark  rounded">
+  <form method="post" action="{% url 'mail_form' %}">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Send mail">
+  </form>
+</div>
 {% endblock %}
