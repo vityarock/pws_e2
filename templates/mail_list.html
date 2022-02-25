@@ -11,7 +11,7 @@
   <div class="row">
 
 {% for email in object_list %}
-  	<div class="border-dark  rounded">
+  	<div class="border-dark  rounded d-flex flex-row">
 	  	<div class="col-3 border-dark">
 	       <p>To:  {{ email.receiver }} <br>
 	          Subject: {{ email.subject }} <br>
