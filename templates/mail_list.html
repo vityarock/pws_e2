@@ -7,11 +7,11 @@
 
 
 <p>Messages list:</p>
-{% for email in object_list %}
-<div class="container-fluid border border-dark rounded">
+<div class="container-fluid border">
   <div class="row">
 
-  	<div class="col-3">
+{% for email in object_list %}
+  	<div class="col-3 border-dark rounded">
        <p>To:  {{ email.receiver }} <br>
           Subject: {{ email.subject }} <br>
       	  Status: {% if email.send_status is True %}<span > mail send </span>
