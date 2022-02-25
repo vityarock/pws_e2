@@ -11,15 +11,16 @@
   <div class="row">
 {% for email in object_list %}
   	<div class="col-3">
-      <p>To:  {{ email.receiver }} |
-      	 Subject: {{ email.subject }} |
+       <p>To:  {{ email.receiver }} <br>
+          Subject: {{ email.subject }} <br>
       {% if email.send_status is True %}<span > mail send </span>
       {% else %}<span> mail sheduled </span>
-      {% endif %} | Created: {{ email.sending_time|date:'e Y-m-d H:i:s' }}
-  		 Delay: {{ email.delay }} sec</p>
+      {% endif %} <br>
+      	  Created: {{ email.sending_time|date:'e Y-m-d H:i:s' }}<br>
+  		  Delay: {{ email.delay }} sec</p>
     </div>
     <div class="col-9">  
-    <textarea>Message: {{ email.body }}</textarea>
+    <textarea rows="6" cols="70">Message: {{ email.body }}</textarea>
     </div>
 {% endfor %}
 </div>
