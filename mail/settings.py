@@ -136,7 +136,7 @@ EMAIL_FILE_PATH = './tmp/app-messages'
 EMAIL_USE_SSL = True
 EMAIL_TIMEOUT = 30
 EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_HOST_USER = 'vityarock@yandex.ru'
+EMAIL_HOST_USER = 'username@yandex.ru'
 EMAIL_PORT = 465
 
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
