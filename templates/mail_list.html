@@ -11,20 +11,21 @@
   <div class="row">
 
 {% for email in object_list %}
-  	<div class="col-3 border-dark rounded">
-       <p>To:  {{ email.receiver }} <br>
-          Subject: {{ email.subject }} <br>
-      	  Status: {% if email.send_status is True %}<span > mail send </span>
-      {% else %}<span> mail sheduled </span>
-      {% endif %} <br>
-      	  Created: {{ email.sending_time|date:'e Y-m-d H:i:s' }}<br>
-  		  Delay: {{ email.delay }} sec</p>
+  	<div class="border-dark  rounded">
+	  	<div class="col-3 border-dark">
+	       <p>To:  {{ email.receiver }} <br>
+	          Subject: {{ email.subject }} <br>
+	      	  Status: {% if email.send_status is True %}<span > mail send </span>
+	      {% else %}<span> mail sheduled </span>
+	      {% endif %} <br>
+	      	  Created: {{ email.sending_time|date:'e Y-m-d H:i:s' }}<br>
+	  		  Delay: {{ email.delay }} sec</p>
+	    </div>
+	    <div class="col-9 border">  
+	    <label for="mail_body">Message :</label><br>
+	    <p id = "mail_body" rows="6" cols="70" >{{ email.body }}</p>
+	    </div>
     </div>
-    <div class="col-9">  
-    <label for="mail_body">Message :</label><br>
-    <p class="border" id = "mail_body" rows="6" cols="70" >{{ email.body }}</p>
-    </div>
-
 </div>
 {% endfor %}
 
