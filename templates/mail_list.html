@@ -7,9 +7,10 @@
 
 
 <p>Messages list:</p>
-<div class="container-fluid border">
-  <div class="row">
 {% for email in object_list %}
+<div class="container-fluid border border-dark rounded">
+  <div class="row">
+
   	<div class="col-3">
        <p>To:  {{ email.receiver }} <br>
           Subject: {{ email.subject }} <br>
@@ -23,9 +24,10 @@
     <label for="mail_body">Message :</label><br>
     <p class="border" id = "mail_body" rows="6" cols="70" >{{ email.body }}</p>
     </div>
-    <hr>
-{% endfor %}
+
 </div>
+{% endfor %}
+
 
 <div class="pagination">
     <span class="step-links">
