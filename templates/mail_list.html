@@ -13,14 +13,15 @@
   	<div class="col-3">
        <p>To:  {{ email.receiver }} <br>
           Subject: {{ email.subject }} <br>
-      {% if email.send_status is True %}<span > mail send </span>
+      	  Status: {% if email.send_status is True %}<span > mail send </span>
       {% else %}<span> mail sheduled </span>
       {% endif %} <br>
       	  Created: {{ email.sending_time|date:'e Y-m-d H:i:s' }}<br>
   		  Delay: {{ email.delay }} sec</p>
     </div>
     <div class="col-9">  
-    <textarea rows="6" cols="70">Message: {{ email.body }}</textarea>
+    <label for="mail_body">Review of W3Schools:</label>
+    <textarea id = "mail_body" rows="6" cols="70" >{{ email.body }}</textarea>
     </div>
 {% endfor %}
 </div>
